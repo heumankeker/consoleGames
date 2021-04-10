@@ -1,40 +1,31 @@
 package corrida_Grilo;
 
-import java.util.Random;
-
 public class ThreadProcessor extends Thread {
 
-	Grilo [] grilo;
+	Grilo grilo;
 	
-	int start, end, chegada;
-	Random r = new Random();
+	int chegada, n;
 	
-	public ThreadProcessor(Grilo [] grilo, int start, int end, int chegada) {
+	private Boolean fim;
+	
+	public Boolean fim() {
+		return fim;
+	}
+	
+	public ThreadProcessor(int chegada, int n) {
 		// TODO Auto-generated constructor stub
-		this.grilo = grilo;
-		this.start = start;
-		this.end = end;
+		this.grilo = new Grilo();
 		this.chegada = chegada;
+		this.n = n;
+		fim = false;
 	}
 	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+			fim = grilo.corrida(grilo, chegada, n);
 		
-		for(int c = start; c < end; c++) {
-			while(!grilo[c].getChegada()) {
-				grilo[c].setPercurso(r.nextInt(10-1) + 1);
-				System.out.println("O Grilo " + (c + 1) + " pulou " + grilo[c].getPulo() + "cm e já percorreu " + grilo[c].getPercorre() + "cm");
-				
-				if(grilo[c].getPercorre() >= chegada) {
-					System.out.println("O Grilo " + (c + 1) + " alcançou a linha de chegada com "+ grilo[c].getContP() +" pulos");
-					grilo[c].setChegada(true);					
-				}
-			}
-		}
-	}
-
-		
+	}		
 		//super.run();
 }
 

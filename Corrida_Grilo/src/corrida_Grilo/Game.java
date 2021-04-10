@@ -3,48 +3,38 @@ package corrida_Grilo;
 
 public class Game {
 	
-	private Grilo [] grilos;
-	private int chegada, q;
-	
-	
-	public void createGrilo() {
-		for (int c = 0; c < grilos.length ; c++) {
-			grilos[c] = new Grilo();
-		}
-		
-	}
+	private int chegada, q, gFinal;
 	
 	public void corrida(){
 		chegada =  50;
 		q = 4;
+	
 		
-		grilos = new Grilo[q];
-		createGrilo();
-		
-		int nThreads = 2;
-		int elemThread = q/2;
+		int nThreads = q;
 		
 		ThreadProcessor [] threads = new ThreadProcessor[nThreads];
 	
-		
-		System.out.println("Paralela:");
-		for (int c = 0; c < nThreads; c++) {
-			int inicio = c * elemThread;
-			int fim = inicio + elemThread;
-			threads[c] = new ThreadProcessor(grilos, inicio, fim, chegada);
+		for (int c = 0; c < q; c++) {
+			threads[c] = new ThreadProcessor(chegada, c);
 			threads[c].start();
 		}	
 		
-		for(int c = 0; c < nThreads; c++) {
-			try {
-				threads[c].join();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		while(gFinal < q) {
+			for(int c = 0; c < threads.length; c++) {
+				threads[c].run();
+				if(threads[c].fim()) {
+					gFinal++;
+				}
+			}
+			for(int c = 0; c < nThreads; c++) {
+				try {
+					threads[c].join();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
-	
 
-	
 }
