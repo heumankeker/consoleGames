@@ -23,10 +23,10 @@ public class ThreadProcessor extends Thread {
 		
 		for(int c = start; c < end; c++) {
 			while(!grilo[c].getChegada()) {
-				grilo[c].setPecurso(r.nextInt(10-1) + 1);
-				System.out.println("O Grilo " + (c + 1) + " pulou " + grilo[c].getPulo() + "cm e já percorreu " + grilo[c].getPecorre() + "cm");
+				grilo[c].setPercurso(r.nextInt(10-1) + 1);
+				System.out.println("O Grilo " + (c + 1) + " pulou " + grilo[c].getPulo() + "cm e já percorreu " + grilo[c].getPercorre() + "cm");
 				
-				if(grilo[c].getPecorre() >= chegada) {
+				if(grilo[c].getPercorre() >= chegada) {
 					System.out.println("O Grilo " + (c + 1) + " alcançou a linha de chegada com "+ grilo[c].getContP() +" pulos");
 					grilo[c].setChegada(true);					
 				}

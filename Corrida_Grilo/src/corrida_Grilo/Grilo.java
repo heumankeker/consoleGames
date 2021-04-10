@@ -12,7 +12,7 @@ public Grilo() {
 }
 
 
-public void setPecurso(int pulo) {
+public void setPercurso(int pulo) {
 	this.pulo = pulo;
 	percorre += pulo;
 	contP++;
@@ -25,7 +25,7 @@ public int getContP(){
 	return contP;
 }
 
-public int getPecorre(){
+public int getPercorre(){
 	return percorre;
 }
 
@@ -40,7 +40,7 @@ public Boolean getChegada() {
 public  void corrida(Grilo grilo, int chegada, int n) {
 	while(!grilo.getChegada()) {
 		if (grilo.percorre <= chegada) {
-			grilo.setPecurso(r.nextInt(10-1) + 1);
+			grilo.setPercurso(r.nextInt(10-1) + 1);
 			System.out.println("O Grilo " + (n + 1) + " pulou " + grilo.pulo + "cm e já percorreu " + grilo.percorre + "cm");
 		}else {
 			System.out.println("O Grilo " + (n + 1) + " alcançou a linha de chegada com "+ grilo.contP +" pulos");
