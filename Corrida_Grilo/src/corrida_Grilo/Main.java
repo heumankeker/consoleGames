@@ -1,6 +1,5 @@
 package corrida_Grilo;
 
-import java.util.Random;
 
 public class Main {
 

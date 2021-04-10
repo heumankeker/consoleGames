@@ -1,8 +1,11 @@
 package corrida_Grilo;
 
+import java.util.Random;
+
 public class Grilo {
-private int  pulo, contP, pecorre;
+private int  pulo, contP, percorre;
 private Boolean chegada = false;
+Random r = new Random();
 
 public Grilo() {
 	
@@ -11,7 +14,7 @@ public Grilo() {
 
 public void setPecurso(int pulo) {
 	this.pulo = pulo;
-	pecorre += pulo;
+	percorre += pulo;
 	contP++;
 }
 public int getPulo(){
@@ -23,7 +26,7 @@ public int getContP(){
 }
 
 public int getPecorre(){
-	return pecorre;
+	return percorre;
 }
 
 public void setChegada(Boolean chegada) {
@@ -36,14 +39,13 @@ public Boolean getChegada() {
 
 public  void corrida(Grilo grilo, int chegada, int n) {
 	while(!grilo.getChegada()) {
-		if (grilo.getPecorre() <= chegada) {
+		if (grilo.percorre <= chegada) {
 			grilo.setPecurso(r.nextInt(10-1) + 1);
-			System.out.println("O Grilo " + (n + 1) + " pulou " + grilo.pulo + "cm e jÃ¡ percorreu " + grilo.pecorre + "cm");
+			System.out.println("O Grilo " + (n + 1) + " pulou " + grilo.pulo + "cm e já percorreu " + grilo.percorre + "cm");
 		}else {
-			System.out.println("O Grilo " + (n + 1) + " alcanÃ§ou a linha de chegada com "+ grilo.contP +" pulos");
+			System.out.println("O Grilo " + (n + 1) + " alcançou a linha de chegada com "+ grilo.contP +" pulos");
 			grilo.setChegada(true);
 		}
 	}					
-}
-	
+}	
 }

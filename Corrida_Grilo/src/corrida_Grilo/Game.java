@@ -1,17 +1,14 @@
 package corrida_Grilo;
 
-import java.util.Random;
 
 public class Game {
 	
 	private Grilo [] grilos;
-	private int chegada;
-	Random r = new Random();
+	private int chegada, q;
 	
 	
-	public void createGrilo(int q) {
-		grilos = new Grilo[q];
-		for (int c = 0; c < q ; c++) {
+	public void createGrilo() {
+		for (int c = 0; c < grilos.length ; c++) {
 			grilos[c] = new Grilo();
 		}
 		
@@ -19,13 +16,35 @@ public class Game {
 	
 	public void corrida(){
 		chegada =  50;
-		createGrilo(5);
+		q = 4;
+		
+		grilos = new Grilo[q];
+		createGrilo();
+		
+		int nThreads = 2;
+		int elemThread = q/2;
+		
+		ThreadProcessor [] threads = new ThreadProcessor[nThreads];
 	
-		for(int c = 0; c < grilos.length; c++) {
-			grilos[c].corrida(grilos[c], chegada, c);
-			
+		
+		System.out.println("Paralela:");
+		for (int c = 0; c < nThreads; c++) {
+			int inicio = c * elemThread;
+			int fim = inicio + elemThread;
+			threads[c] = new ThreadProcessor(grilos, inicio, fim, chegada);
+			threads[c].start();
+		}	
+		
+		for(int c = 0; c < nThreads; c++) {
+			try {
+				threads[c].join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-			
 	}
+	
+
 	
 }
