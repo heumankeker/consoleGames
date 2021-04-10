@@ -3,7 +3,7 @@ package corrida_Grilo;
 
 public class Game {
 	
-	private int chegada, q, gFinal;
+	private int chegada, q;
 	
 	public void corrida(){
 		chegada =  50;
@@ -19,13 +19,6 @@ public class Game {
 			threads[c].start();
 		}	
 		
-		while(gFinal < q) {
-			for(int c = 0; c < threads.length; c++) {
-				threads[c].run();
-				if(threads[c].fim()) {
-					gFinal++;
-				}
-			}
 			for(int c = 0; c < nThreads; c++) {
 				try {
 					threads[c].join();
@@ -34,7 +27,7 @@ public class Game {
 					e.printStackTrace();
 				}
 			}
-		}
+		
 	}
 
 }
