@@ -11,8 +11,13 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 
 public class Main extends Thread implements Runnable {
 
-	//Array atômico para concorrencia de dados = Define array baseado no número máximo de Grilos
+	//Array atômico para concorrencia de dados!
+	//Define array do #TOTAL DE PULOS dos grilos, baseado no número máximo de Grilos
 	private static AtomicIntegerArray AT = new AtomicIntegerArray(50);
+	
+	//Array atômico para concorrencia de dados!
+	//Define array #TOTAL PERCORRIDO pelo grilos, baseado no número máximo de Grilos
+	private static AtomicIntegerArray AP = new AtomicIntegerArray(50);
 	
 	//variável para index corrente do array de thread - 
 	//A posição é passada como referência para a tread e, indica o local de index do array 
@@ -28,8 +33,9 @@ public class Main extends Thread implements Runnable {
 	public void run()
 	{  
 		int chegada = 100;   //DISTÂNCIA da linha de chegada
-		int pulos = 0;        //número de pulos
-		int somaPulo = 0;     //soma total de pulos da thread
+		int pulos = 0;        //soma total de pulos da thread
+		int somaPulo = 0;     //soma total da distância percorrida por cada grilo
+		
 		
 		System.out.println("______________________________");
 		System.out.println("GRILO Thread " + Thread.currentThread().getName()  + " jogando...\n");
@@ -58,6 +64,7 @@ public class Main extends Thread implements Runnable {
 			// insere o valor da soma dos pulos do grilo na variável atomica tendo como
 			// base o valor recebido no index da criação da thread.
 			AT.set(nova, pulos);
+			AP.set(nova, somaPulo);
 	}  
 	public static void main(String[] args) throws InterruptedException {
 		//MAXIMO de GRILOS/THREADS
@@ -68,6 +75,12 @@ public class Main extends Thread implements Runnable {
 		
 		//inicializa os valores do vector atomico AT
         for (int i=0; i<AT.length(); i++)
+        {
+            AT.set(i, 0);
+        }
+        
+    	//inicializa os valores do vector atomico AT
+        for (int i=0; i<AP.length(); i++)
         {
             AT.set(i, 0);
         }
@@ -92,6 +105,7 @@ public class Main extends Thread implements Runnable {
         System.out.println("!!! Fim da corrida !!!");
         System.out.println("RESULTADO");
         System.out.println("---" + AT + "---\n");
+        System.out.println("---" + AP + "---\n");
         
       //suspende o start da thread por 3 segundos neste caso do main..
         Thread.sleep(3000);
