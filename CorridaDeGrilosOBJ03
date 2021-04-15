@@ -192,17 +192,37 @@ public class Main extends Thread implements Runnable {
 	    System.out.println("______________________________________________\n");
 	    
 	    System.out.println("__________Checando o GRILO Vencedor__________\n");
-	    int winner = 0;
+	    
+	    	    int winner = 0;
 	    
 	    for (int c = 0; c < AT.length(); c ++)
         {
 	    	if(winner == 0) {
 	    		winner = c;
 	    	}
-	    	if(AT.get(c) < winner) {
+	    	if(AT.get(c) < AT.get(winner)) {
 	    		winner = c;
 	    	}
         }
-	    System.out.println("---GRILO " + winner + "--- quanhou com "+ AT.get(winner) + " pulos");
+	    System.out.println("---GRILO " + winner + "--- quanhou com "+ AT.get(winner) + " pulos \n");
+	    
+	    System.out.println("________________TIME vencedor________________\n");
+	    Thread.sleep(1000);
+	    
+	    int timeW = 0;
+	    corrente = 0; 
+	    for(int i = 0; corrente < AT.length(); i++)
+	    {
+		    for(int l = 0; l< maxTeam; l++) 
+		    {
+			    if(i == winner) {
+			    	timeW = i ;
+			    }		    	
+			    corrente++;
+		    }
+		    
+	    }
+	    System.out.println("O Time " + timeW +" foi o ganhador.");
+	   
 	}
 }
