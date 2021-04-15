@@ -18,7 +18,12 @@ public class Main extends Thread implements Runnable {
 	//Array atômico para concorrencia de dados!
 	//Define array #TOTAL PERCORRIDO pelo grilos, baseado no número máximo de Grilos
 	private static AtomicIntegerArray AP = new AtomicIntegerArray(9);
+	
+	//Define array #TOTAL DE PULOS pelo TIME de 3
 	private static AtomicIntegerArray AG = new AtomicIntegerArray(3);
+	
+	//Define array #TOTAL PERCORRIDO pelo TIME de 3
+	private static AtomicIntegerArray AD = new AtomicIntegerArray(3);
 	
 	//variável para index corrente do array de thread - 
 	//A posição é passada como referência para a tread e, indica o local de index do array 
@@ -71,8 +76,6 @@ public class Main extends Thread implements Runnable {
 		//MAXIMO de GRILOS/THREADS
 		int max = 9;
 		int maxTeam =3;
-		//int[] teamPulos = new int[3];
-		//int[] teamPercurso = new int[9];
 		
 		//variável auxiliar para enviar o index corrent da thread;
 		int nova = 0;
@@ -89,11 +92,18 @@ public class Main extends Thread implements Runnable {
             AT.set(i, 0);
         }
         
-      //inicializa os valores do vector atomico AG
+        //inicializa os valores do vector atomico AG
         for (int i=0; i<AG.length(); i++)
         {
             AT.set(i, 0);
         }
+        
+        //inicializa os valores do vector atomico AD
+        for (int i=0; i<AD.length(); i++)
+        {
+            AT.set(i, 0);
+        }
+        
 		//inicializa a variável para uso do sleep()
 		long start = System.currentTimeMillis();
 		
@@ -106,39 +116,81 @@ public class Main extends Thread implements Runnable {
 	      test[a].start();
 	      test[a].join();
 	    }
-	    System.out.println("_______________LOADING_______________\n");
+	    System.out.println("______________________________________________\n");
+        System.out.println(">>>>>>>>>>>!!! FIM DA CORRIDA !!!<<<<<<<<<<<<<");
+	    System.out.println("___________________LOADING__________________\n");
 	    
 		//suspende o start da thread por 3 segundos neste caso do main..
         Thread.sleep(3000);
 
         //imprime o vector AT
-        System.out.println("!!! Fim da corrida !!!");
-        System.out.println("RESULTADO");
+
+        System.out.println("__________________RESULTADO__________________");
         System.out.println("---" + AT + "---\n");
         System.out.println("---" + AP + "---\n");
-        
+	    System.out.println("______________________________________________\n");
+	    
       //suspende o start da thread por 3 segundos neste caso do main..
         Thread.sleep(3000);
-	    System.out.println("_______________Checando o GRILO Vencedor_______________\n");
+
+        System.out.println("______________Resultado Individual_____________\n");
+
+	    Thread.sleep(3000);
 	    
 	    for (int d=0; d<AT.length(); d++)
         {
             System.out.println("---GRILO " + d + "--- pulou "+ AT.get(d) + " vezes >> percorreu " + AP.get(d) + "cm\n");
         }
+	    System.out.println("______________________________________________\n");
+	    System.out.println("Calculando o total de pulos de cada Time..... \n");
+	    Thread.sleep(3000);
+	    System.out.println("_______________ PULOS POR TIME _______________\n");
+
+
 	    
 	    //fazendo a soma dos pulos Times de 3 grilos
-	    
+	    int corrente = 0; 
+	    for(int i=0; corrente<AT.length();i++)
+	    {
 	    int somaTeam = 0;
 	   
-	    for(int l =0 ; l<maxTeam;l++) 
-	    {
-	    		int valor = 0;
-	    		valor= AT.get(l);
-	    		somaTeam = somaTeam + valor;
-	    		
+		    for(int l =0 ; l<maxTeam;l++) 
+		    {
+		    		int valor = 0;
+		    		valor= AT.get(corrente);
+		    		somaTeam = somaTeam + valor;
+		    		corrente++;
+		    }
+		    
+	    
+	    AG.set(i, somaTeam);
+	    System.out.println("O Time " + i +"# pulou |"+ AG.get(i) +"| vezes #");
 	    }
-	    System.out.println("Soma "+ somaTeam);
-	    AG.set(0, somaTeam);
-	    System.out.println("Soma no vetor AG "+ AG.get(0));
+	    
+	    System.out.println("______________________________________________\n");
+	    System.out.println("Calculando a distância total de cada time..... \n");
+	    Thread.sleep(3000);
+	    System.out.println("______________Distância POR TIME______________\n");
+	    
+	    //fazendo a soma da distância dos Times de 3 grilos
+	    int corrente2 = 0; 
+	    for(int i=0; corrente2<AP.length();i++)
+	    {
+	    int somaTeam = 0;
+	   
+		    for(int l =0 ; l<maxTeam;l++) 
+		    {
+		    		int valor = 0;
+		    		valor= AP.get(corrente2);
+		    		somaTeam = somaTeam + valor;
+		    		corrente2++;
+		    }
+
+	    AD.set(i, somaTeam);
+	    System.out.println("O Time " + i +"# pulou |"+ AD.get(i) +"| vezes #");
+	    }
+	    System.out.println("______________________________________________\n");
+	    
+	    System.out.println("__________Checando o GRILO Vencedor__________\n");
 	}
 }
