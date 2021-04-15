@@ -13,17 +13,17 @@ public class Main extends Thread implements Runnable {
 
 	//Array atômico para concorrencia de dados!
 	//Define array do #TOTAL DE PULOS dos grilos, baseado no número máximo de Grilos
-	private static AtomicIntegerArray AT = new AtomicIntegerArray(9);
+	private static AtomicIntegerArray AT = new AtomicIntegerArray(12);
 	
 	//Array atômico para concorrencia de dados!
 	//Define array #TOTAL PERCORRIDO pelo grilos, baseado no número máximo de Grilos
-	private static AtomicIntegerArray AP = new AtomicIntegerArray(9);
+	private static AtomicIntegerArray AP = new AtomicIntegerArray(12);
 	
 	//Define array #TOTAL DE PULOS pelo TIME de 3
-	private static AtomicIntegerArray AG = new AtomicIntegerArray(3);
+	private static AtomicIntegerArray AG = new AtomicIntegerArray(4);
 	
 	//Define array #TOTAL PERCORRIDO pelo TIME de 3
-	private static AtomicIntegerArray AD = new AtomicIntegerArray(3);
+	private static AtomicIntegerArray AD = new AtomicIntegerArray(4);
 	
 	//variável para index corrente do array de thread - 
 	//A posição é passada como referência para a tread e, indica o local de index do array 
@@ -74,7 +74,7 @@ public class Main extends Thread implements Runnable {
 	}  
 	public static void main(String[] args) throws InterruptedException {
 		//MAXIMO de GRILOS/THREADS
-		int max = 9;
+		int max = 12;
 		int maxTeam =3;
 		
 		//variável auxiliar para enviar o index corrent da thread;
@@ -187,7 +187,7 @@ public class Main extends Thread implements Runnable {
 		    }
 
 	    AD.set(i, somaTeam);
-	    System.out.println("O Time " + i +"# pulou |"+ AD.get(i) +"| vezes #");
+	    System.out.println("O Time " + i +"# percorreu |"+ AD.get(i) +"| cm #");
 	    }
 	    System.out.println("______________________________________________\n");
 	    
@@ -198,9 +198,7 @@ public class Main extends Thread implements Runnable {
 	 
 	    int vice = AT.get(0);
 	    int viceIndex= 0;
-	    
-	    int terceiro = AT.get(0);
-	    int terceiroIndex = 0;
+
 	    
 	    for (int c = 0; c < AT.length();c++)
         {
@@ -212,20 +210,15 @@ public class Main extends Thread implements Runnable {
 	    		vice = AT.get(c);
 	    		viceIndex=c;
 	    	}
-	    	if(vice==AT.get(c)) {
-	    		terceiro = AT.get(c);
-	    		terceiroIndex=c;
-	    	}
+	 
         }
-	 	System.out.println( "O GRILO #"+ winnerIndex + " winner " + winner);
+	 	System.out.println( "O GRILO #"+ winnerIndex + " venceu " + winner);
 	 	
 	 	if(winnerIndex!=viceIndex) {
 	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
 	 	}
 	 	
-	 	if(viceIndex!=terceiroIndex) {
-	 		System.out.println( "O GRILO #"+ terceiroIndex + " empatou " + terceiro);
-	 	}
+
 
 	 	System.out.println("______________________________________________\n");
 	    System.out.println("________________TIME vencedor________________\n");
