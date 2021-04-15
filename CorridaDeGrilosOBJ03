@@ -192,5 +192,17 @@ public class Main extends Thread implements Runnable {
 	    System.out.println("______________________________________________\n");
 	    
 	    System.out.println("__________Checando o GRILO Vencedor__________\n");
+	    int winner = 0;
+	    
+	    for (int c = 0; c < AT.length(); c ++)
+        {
+	    	if(winner == 0) {
+	    		winner = c;
+	    	}
+	    	if(AT.get(c) < winner) {
+	    		winner = c;
+	    	}
+        }
+	    System.out.println("---GRILO " + winner + "--- quanhou com "+ AT.get(winner) + " pulos");
 	}
 }
