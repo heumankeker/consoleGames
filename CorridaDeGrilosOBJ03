@@ -221,23 +221,21 @@ public class Main extends Thread implements Runnable {
 
 
 	 	System.out.println("______________________________________________\n");
-	    System.out.println("________________TIME vencedor________________\n");
-	    Thread.sleep(1000);
+	 	
+	    	System.out.println("________________TIME vencedor________________\n");
+	   	Thread.sleep(1000);
 	    
-	    int timeW = 0;
-	    corrente = 0; 
-	    for(int i = 0; corrente < AT.length(); i++)
+	    	int corrente3 = 0; 
+	    	for(int i = 0; corrente3 < AT.length(); i++)
 	    {
-		    for(int l = 0; l< maxTeam; l++) 
+		    for(int l = 0 ; l < maxTeam; l++) 
 		    {
-			    if(i == winner) {
-			    	timeW = i ;
-			    }		    	
-			    corrente++;
+		    	if(corrente3 == winnerIndex) {	  
+		    		System.out.println("O TIME " + i +"# foi o ganhador.");	
+		    	}	
+		    	corrente3++;
 		    }
-		    
 	    }
-	    System.out.println("O Time " + timeW +" foi o ganhador.");
 	   
 	}
 }
