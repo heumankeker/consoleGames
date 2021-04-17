@@ -115,7 +115,7 @@ public class Main extends Thread implements Runnable {
 		
 	    System.out.println("______________________________________________\n");
 	    System.out.println("CORRIDA DE GRILOS 2021 - GRILOLANDIA - IFRJ - CEPF - iA jAVA");
-	    Thread.sleep(4000);
+	    Thread.sleep(2000);
 	    System.out.println("CURSO SUPERIOR DE TECNOLOGIA EM JOGOS DIGITAIS\n");
 	    Thread.sleep(2000);
 	    System.out.println("#DESENVOLVIDO POR# | HEUMAN ANTUNES & SUSAN A. DE OLIVEIRA |");
@@ -123,7 +123,7 @@ public class Main extends Thread implements Runnable {
 	    System.out.println(" - PROFESSOR JOSÉ RICARDO JUNOR - \n");
 	    Thread.sleep(2000);
 	    System.out.println(">>>>>>>>>>> Em Suas Marcas GriloThread's <<<<<<<<<<<<<\n");
-	    Thread.sleep(5000);
+	    Thread.sleep(3000);
 	    System.out.println(">>>>>>>>>>> 03 <<<<<<<<<<<<<");
 	    Thread.sleep(1000);
 	    System.out.println(">>>>>>>>>>> 02 <<<<<<<<<<<<<");
@@ -143,7 +143,7 @@ public class Main extends Thread implements Runnable {
 	    System.out.println("___________________LOADING__________________\n");
 	    
 		//suspende o start da thread por 3 segundos neste caso do main..
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //imprime o vector AT
 
@@ -153,11 +153,11 @@ public class Main extends Thread implements Runnable {
 	    System.out.println("______________________________________________\n");
 	    
       //suspende o start da thread por 3 segundos neste caso do main..
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         System.out.println("______________Resultado Individual_____________\n");
 
-	    Thread.sleep(3000);
+	    Thread.sleep(2000);
 	    
 	    for (int d=0; d<AT.length(); d++)
         {
@@ -165,7 +165,7 @@ public class Main extends Thread implements Runnable {
         }
 	    System.out.println("______________________________________________\n");
 	    System.out.println("Calculando o total de pulos de cada Time..... \n");
-	    Thread.sleep(3000);
+	    Thread.sleep(2000);
 	    System.out.println("_______________ PULOS POR TIME _______________\n");
 
 
@@ -191,7 +191,7 @@ public class Main extends Thread implements Runnable {
 	    
 	    System.out.println("______________________________________________\n");
 	    System.out.println("Calculando a distância total de cada time..... \n");
-	    Thread.sleep(3000);
+	    Thread.sleep(2000);
 	    System.out.println("______________Distância POR TIME______________\n");
 	    
 	    //fazendo a soma da distância dos Times de 3 grilos
@@ -228,16 +228,21 @@ public class Main extends Thread implements Runnable {
 	    		winner = AT.get(c);
 	    		winnerIndex=c;
 	    	}
-	    	//se algum vetor
-	    	if(winner==AT.get(c)) {
+        }
+	    for (int c = 0; c < AT.length();c++)
+        {
+			if(winner==AT.get(c)) 
+			{
 	    		vice = AT.get(c);
 	    		viceIndex=c;
-	    		if(winnerIndex!=viceIndex && vice==winner) {
+	    		if(winnerIndex!=viceIndex && vice==winner) 
+	    		{
 	    	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
-	    	 	}
-	    	}
-	 
+	    		}
+			}
         }
+    	
+	    
 	    //imprimindo o Grilo vencedor
 	 	System.out.println( "O GRILO #"+ winnerIndex + " venceu " + winner);
 	 	
