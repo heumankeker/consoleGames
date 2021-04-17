@@ -232,6 +232,9 @@ public class Main extends Thread implements Runnable {
 	    	if(winner==AT.get(c)) {
 	    		vice = AT.get(c);
 	    		viceIndex=c;
+	    		if(winnerIndex!=viceIndex && vice==winner) {
+	    	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
+	    	 	}
 	    	}
 	 
         }
@@ -239,9 +242,7 @@ public class Main extends Thread implements Runnable {
 	 	System.out.println( "O GRILO #"+ winnerIndex + " venceu " + winner);
 	 	
 	 	//imprimindo o Grilo que empatou se for o caso
-	 	if(winnerIndex!=viceIndex) {
-	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
-	 	}
+	
 	 	
 	 	System.out.println("______________________________________________\n");
 	 	
