@@ -237,14 +237,14 @@ public class Main extends Thread implements Runnable {
 	    		viceIndex=c;
 	    		if(winnerIndex!=viceIndex && vice==winner) 
 	    		{
-	    	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
+	    	 		System.out.println( "O GRILO #"+ viceIndex + " empatou com " + vice + " pulos");
 	    		}
 			}
         }
     	
 	    
 	    //imprimindo o Grilo vencedor
-	 	System.out.println( "O GRILO #"+ winnerIndex + " venceu " + winner);
+	 	System.out.println( "O GRILO #"+ winnerIndex + " venceu com " + winner + " pulos");
 	 	
 	 	//imprimindo o Grilo que empatou se for o caso
 	
@@ -262,7 +262,7 @@ public class Main extends Thread implements Runnable {
 			    {
 			    	if(corrente3 == winnerIndex) 
 			    	{	  
-			    		System.out.println("O TIME " + i+"# foi o ganhador.");	
+			    		System.out.println("O TIME " + i + "# foi o ganhador.");	
 			    	}	
 		    	corrente3++;
 			    }
