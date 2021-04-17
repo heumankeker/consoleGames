@@ -104,20 +104,42 @@ public class Main extends Thread implements Runnable {
             AT.set(i, 0);
         }
         
-		//inicializa a variável para uso do sleep()
-		long start = System.currentTimeMillis();
+
 		
 		//INICIANDO THREADS
 		Main test[] = new Main[max];  
 		
+		//inicializa a variável para uso do sleep()
+		long start = System.currentTimeMillis();
+		
+		
+	    System.out.println("______________________________________________\n");
+	    System.out.println("CORRIDA DE GRILOS 2021 - GRILOLANDIA - IFRJ - CEPF - iA jAVA");
+	    Thread.sleep(4000);
+	    System.out.println("CURSO SUPERIOR DE TECNOLOGIA EM JOGOS DIGITAIS\n");
+	    Thread.sleep(2000);
+	    System.out.println("#DESENVOLVIDO POR# | HEUMAN ANTUNES & SUSAN A. DE OLIVEIRA |");
+	    Thread.sleep(2000);
+	    System.out.println(" - PROFESSOR JOSÉ RICARDO JUNOR - \n");
+	    Thread.sleep(2000);
+	    System.out.println(">>>>>>>>>>> Em Suas Marcas GriloThread's <<<<<<<<<<<<<\n");
+	    Thread.sleep(5000);
+	    System.out.println(">>>>>>>>>>> 03 <<<<<<<<<<<<<");
+	    Thread.sleep(1000);
+	    System.out.println(">>>>>>>>>>> 02 <<<<<<<<<<<<<");
+	    Thread.sleep(1000);
+	    System.out.println(">>>>>>>>>>> 01 <<<<<<<<<<<<<\n");
+	    Thread.sleep(1000);
+	    System.out.println("<<<<<<<<<<< !GO! >>>>>>>>>>>>>\n");
+	    Thread.sleep(800);
 	    for(int a = 0; a < test.length; a++)
 	    {
 	      test[a] = new Main(a);
 	      test[a].start();
 	      test[a].join();
 	    }
-	    System.out.println("______________________________________________\n");
-        System.out.println(">>>>>>>>>>>!!! FIM DA CORRIDA !!!<<<<<<<<<<<<<");
+	    
+        System.out.println("\n>>>>>>>>>>>!!! FIM DA CORRIDA !!!<<<<<<<<<<<<<\n");
 	    System.out.println("___________________LOADING__________________\n");
 	    
 		//suspende o start da thread por 3 segundos neste caso do main..
@@ -206,36 +228,41 @@ public class Main extends Thread implements Runnable {
 	    		winner = AT.get(c);
 	    		winnerIndex=c;
 	    	}
+	    	//se algum vetor
 	    	if(winner==AT.get(c)) {
 	    		vice = AT.get(c);
 	    		viceIndex=c;
+	    		if(winnerIndex!=viceIndex) {
+	    	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
+	    	 	}
 	    	}
 	 
         }
+	    //imprimindo o Grilo vencedor
 	 	System.out.println( "O GRILO #"+ winnerIndex + " venceu " + winner);
 	 	
-	 	if(winnerIndex!=viceIndex) {
-	 		System.out.println( "O GRILO #"+ viceIndex + " empatou " + vice);
-	 	}
+	 	//imprimindo o Grilo que empatou se for o caso
+	 
 	 	
-
-
 	 	System.out.println("______________________________________________\n");
 	 	
 	    	System.out.println("________________TIME vencedor________________\n");
 	   	Thread.sleep(1000);
 	    
+	   	//calculando o time vencedor
 	    	int corrente3 = 0; 
 	    	for(int i = 0; corrente3 < AT.length(); i++)
-	    {
-		    for(int l = 0 ; l < maxTeam; l++) 
-		    {
-		    	if(corrente3 == winnerIndex) {	  
-		    		System.out.println("O TIME " + i +"# foi o ganhador.");	
-		    	}	
+	    	{
+			    for(int l = 0 ; l < maxTeam; l++) 
+			    {
+			    	if(corrente3 == winnerIndex) 
+			    	{	  
+			    		System.out.println("O TIME " + i+"# foi o ganhador.");	
+			    	}	
 		    	corrente3++;
-		    }
-	    }
+			    }
+	    	}
 	   
 	}
+	// fim do programa;
 }
