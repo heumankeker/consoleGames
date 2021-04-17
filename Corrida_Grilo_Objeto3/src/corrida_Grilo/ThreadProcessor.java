@@ -11,7 +11,6 @@ public class ThreadProcessor extends Thread {
 	
 	
 	public ThreadProcessor(int chegada, int n) {
-		// TODO Auto-generated constructor stub
 		this.chegada = chegada;
 		this.n = n + 1;
 	}
@@ -25,12 +24,11 @@ public class ThreadProcessor extends Thread {
 				percorre += pulo;
 				contP++;
 				System.out.println("O Grilo " + n + " pulou " + pulo + "cm e já percorreu " + percorre + "cm");
-				/*try {
+				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 			}else {
 				fim = true;
 				System.out.println("O Grilo " + n + " alcançou a linha de chegada com "+ contP +" pulos");

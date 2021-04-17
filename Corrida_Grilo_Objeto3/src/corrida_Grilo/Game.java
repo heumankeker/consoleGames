@@ -46,7 +46,7 @@ public class Game {
 	    	 		System.out.println( "O Grilo "+ c + " empatou com " + threads[c].contP + " pulos");
 			}
         }
-	 	
+	    
 	    int corrente = 0; 
 	    int timeVencedor = 0;
 	    
