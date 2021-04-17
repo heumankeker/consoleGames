@@ -4,7 +4,7 @@ package corrida_Grilo;
 public class Game {
 	
 	private int chegada, q;
-	ThreadProcessor winner;
+	ThreadProcessor winner, vice;
 	
 	public void corrida(){
 		chegada =  50;
@@ -29,6 +29,7 @@ public class Game {
 		}
 		
 		winner = threads[0];
+		vice = threads[0];
 		
 		for (int c = 0; c < threads.length ;c++)
         {
@@ -38,6 +39,13 @@ public class Game {
         }
 	 	System.out.println( "O Grilo "+ winner.n + " venceu com " + winner.contP + " pulos");
 		
+	    for (int c = 0; c < threads.length;c++)
+        {
+			if(winner.contP == threads[c].contP && winner.n != threads[c].n) 
+			{
+	    	 		System.out.println( "O Grilo "+ c + " empatou com " + threads[c].contP + " pulos");
+			}
+        }
 	}
 
 }
