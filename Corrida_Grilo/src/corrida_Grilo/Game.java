@@ -4,6 +4,7 @@ package corrida_Grilo;
 public class Game {
 	
 	private int chegada, q;
+	ThreadProcessor winner = null;
 	
 	public void corrida(){
 		chegada =  50;
@@ -26,6 +27,16 @@ public class Game {
 				e.printStackTrace();
 			}
 		}
+		
+		winner = threads[0];
+		
+		for (int c = 0; c < threads.length ;c++)
+        {
+	    	if(threads[c].contP < winner.contP) {
+	    		winner = threads[c];
+	    	}
+        }
+	 	System.out.println( "O Grilo "+ winner.n + " venceu com " + winner.contP + " pulos");
 	}
 
 }
