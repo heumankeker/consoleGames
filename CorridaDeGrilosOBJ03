@@ -136,7 +136,7 @@ public class Main extends Thread implements Runnable {
 	    {
 	      test[a] = new Main(a);
 	      test[a].start();
-	      test[a].join();
+	      //test[a].join();
 	    }
 	    
         System.out.println("\n>>>>>>>>>>>!!! FIM DA CORRIDA !!!<<<<<<<<<<<<<\n");
